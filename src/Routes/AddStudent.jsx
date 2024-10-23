@@ -1,14 +1,33 @@
 // TODO: answer here
+import { useState } from 'react';
 import Navbar from '../components/Navbar';
 
 const AddStudent = () => {
-  // TODO: answer here
+  // TODO: answer here,
+  const [formStudent, setFormStudent] = useState({
+    fullName: '',
+    profilePicture: '',
+    address: '',
+    phoneNumber: '',
+    dateBirth: '',
+    gender: '',
+    prody: '',
+  });
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(formStudent);
+  };
 
   return (
     <>
       <Navbar />
       <main className='bg-[#F6F8FD] h-screen flex justify-center items-center p-4'>
-        <form data-testid='form-student' className='flex gap-4 flex-col bg-white max-w-2xl w-full p-4 h-max rounded-xl shadow-md'>
+        <form
+          data-testid='form-student'
+          className='flex gap-4 flex-col bg-white max-w-2xl w-full p-4 h-max rounded-xl shadow-md'
+          onSubmit={handleFormSubmit}
+        >
           <h2 className='font-bold text-2xl text-center'>Form Student</h2>
 
           <input
@@ -18,6 +37,7 @@ const AddStudent = () => {
             id='input-name'
             placeholder='full name'
             className=' border-2 p-2 rounded-full pl-2'
+            onChange={(e) => setFormStudent({ ...formStudent, fullName: e.target.value })}
           />
 
           <input
@@ -27,6 +47,7 @@ const AddStudent = () => {
             id='input-profilePicture'
             placeholder='Profile Picture'
             className='border-2 p-2 rounded-full pl-2'
+            onChange={(e) => setFormStudent({ ...formStudent, profilePicture: e.target.value })}
           />
 
           <input
@@ -36,16 +57,17 @@ const AddStudent = () => {
             id='input-address'
             placeholder='Address'
             className=' border-2 p-2 rounded-full pl-2'
+            onChange={(e) => setFormStudent({ ...formStudent, address: e.target.value })}
           />
 
           <input
-            type='text'
-            pattern='[0:9]'
+            type='number'
             data-testid='phoneNumber'
             name='phoneNumber'
             id='input-phoneNumber'
             placeholder='Phone Number'
             className='border-2 p-2 rounded-full pl-2'
+            onChange={(e) => setFormStudent({ ...formStudent, phoneNumber: e.target.value })}
           />
 
           <input
@@ -55,9 +77,15 @@ const AddStudent = () => {
             id='input-birthDate'
             placeholder='Birth Date'
             className=' border-2 p-2 rounded-full pl-2'
+            onChange={(e) => setFormStudent({ ...formStudent, dateBirth: e.target.value })}
           />
 
-          <select id='input-gender' data-testid='gender' className='bg-white border-2 p-2 rounded-full'>
+          <select
+            id='input-gender'
+            data-testid='gender'
+            className='bg-white border-2 p-2 rounded-full'
+            onChange={(e) => setFormStudent({ ...formStudent, gender: e.target.value })}
+          >
             <option value='' disabled selected hidden>
               Gender
             </option>
@@ -65,7 +93,12 @@ const AddStudent = () => {
             <option value='Female'>Female</option>
           </select>
 
-          <select id='input-prody' data-testid='prody' className='bg-white border-2 p-2 rounded-full'>
+          <select
+            id='input-prody'
+            data-testid='prody'
+            className='bg-white border-2 p-2 rounded-full'
+            onChange={(e) => setFormStudent({ ...formStudent, prody: e.target.value })}
+          >
             <option value='' disabled selected hidden>
               Program Study
             </option>
