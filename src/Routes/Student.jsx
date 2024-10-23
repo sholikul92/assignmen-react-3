@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
-import AddStudent from './AddStudent';
 
 const Student = () => {
   // TODO: answer here
