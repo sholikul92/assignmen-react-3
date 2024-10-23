@@ -1,19 +1,21 @@
 // TODO: answer here
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const AddStudent = () => {
   // TODO: answer here,
   const [formStudent, setFormStudent] = useState({
-    fullName: '',
+    fullname: '',
     profilePicture: '',
     address: '',
     phoneNumber: '',
-    dateBirth: '',
+    birthDate: '',
     gender: '',
-    prody: '',
+    programStudy: '',
   });
   const [faculty, setFaculty] = useState('');
+  const navigate = useNavigate();
 
   const chooseFaculty = (prody) => {
     switch (prody) {
@@ -43,13 +45,30 @@ const AddStudent = () => {
   };
 
   useEffect(() => {
-    chooseFaculty(formStudent.prody);
-  }, [formStudent.prody]);
+    chooseFaculty(formStudent.programStudy);
+  }, [formStudent.programStudy]);
 
-  const handleFormSubmit = (e) => {
+  const createStudent = async () => {
+    try {
+      await fetch('http://localhost:3001/student', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formStudent,
+          faculty,
+        }),
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(formStudent);
-    console.log(faculty);
+    await createStudent();
+    navigate('/student');
   };
 
   return (
@@ -70,7 +89,7 @@ const AddStudent = () => {
             id='input-name'
             placeholder='full name'
             className=' border-2 p-2 rounded-full pl-2'
-            onChange={(e) => setFormStudent({ ...formStudent, fullName: e.target.value })}
+            onChange={(e) => setFormStudent({ ...formStudent, fullname: e.target.value })}
             required
           />
 
@@ -114,7 +133,7 @@ const AddStudent = () => {
             id='input-birthDate'
             placeholder='Birth Date'
             className=' border-2 p-2 rounded-full pl-2'
-            onChange={(e) => setFormStudent({ ...formStudent, dateBirth: e.target.value })}
+            onChange={(e) => setFormStudent({ ...formStudent, birthDate: e.target.value })}
             required
           />
 
@@ -136,7 +155,7 @@ const AddStudent = () => {
             id='input-prody'
             data-testid='prody'
             className='bg-white border-2 p-2 rounded-full'
-            onChange={(e) => setFormStudent({ ...formStudent, prody: e.target.value })}
+            onChange={(e) => setFormStudent({ ...formStudent, programStudy: e.target.value })}
             required
           >
             <option value='' disabled selected hidden>
