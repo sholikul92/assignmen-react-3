@@ -1,26 +1,15 @@
 {
   "student": [
     {
-      "id": "1",
-      "fullname": "Djarot Purnomo",
-      "profilePicture": "https://randomuser.me/api/portraits/men/2.jpg",
-      "address": "Bogor, Indonesia",
-      "birthDate": "1995-03-15",
-      "gender": "Male",
-      "phoneNumber": "+6280987654321",
-      "faculty": "Fakultas Ilmu Sosial dan Politik",
-      "programStudy": "Administrasi Bisnis"
-    },
-    {
       "id": "2",
-      "fullname": "Anshori Atmodiredjo",
+      "fullname": "tejo",
       "profilePicture": "https://randomuser.me/api/portraits/men/47.jpg",
       "address": "Bandung, Indonesia",
       "birthDate": "1993-08-21",
-      "gender": "Male",
+      "gender": "Female",
       "phoneNumber": "+6289876543210",
       "faculty": "Fakultas Teknologi Informasi dan Sains",
-      "programStudy": "Matematika"
+      "programStudy": "Informatika"
     },
     {
       "id": "3",
