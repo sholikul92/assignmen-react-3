@@ -1,5 +1,5 @@
 // TODO: answer here
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 
 const AddStudent = () => {
@@ -13,10 +13,43 @@ const AddStudent = () => {
     gender: '',
     prody: '',
   });
+  const [faculty, setFaculty] = useState('');
+
+  const chooseFaculty = (prody) => {
+    switch (prody) {
+      case 'Ekonomi':
+      case 'Manajemen':
+      case 'Akuntansi':
+        setFaculty('Fakultas Ekonomi');
+        break;
+      case 'Administrasi Publik':
+      case 'Administrasi Bisnis':
+      case 'Hubungan Internasional':
+        setFaculty('Fakultas Ilmu Sosial dan Politik');
+        break;
+      case 'Teknik Sipil':
+      case 'Arsitektur':
+        setFaculty('Fakultas Teknik');
+        break;
+      case 'Matematika':
+      case 'Fisika':
+      case 'Informatika':
+        setFaculty('Fakultas Teknologi Informasi dan Sains');
+        break;
+
+      default:
+        setFaculty('');
+    }
+  };
+
+  useEffect(() => {
+    chooseFaculty(formStudent.prody);
+  }, [formStudent.prody]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(formStudent);
+    console.log(faculty);
   };
 
   return (
@@ -38,6 +71,7 @@ const AddStudent = () => {
             placeholder='full name'
             className=' border-2 p-2 rounded-full pl-2'
             onChange={(e) => setFormStudent({ ...formStudent, fullName: e.target.value })}
+            required
           />
 
           <input
@@ -48,6 +82,7 @@ const AddStudent = () => {
             placeholder='Profile Picture'
             className='border-2 p-2 rounded-full pl-2'
             onChange={(e) => setFormStudent({ ...formStudent, profilePicture: e.target.value })}
+            required
           />
 
           <input
@@ -58,6 +93,7 @@ const AddStudent = () => {
             placeholder='Address'
             className=' border-2 p-2 rounded-full pl-2'
             onChange={(e) => setFormStudent({ ...formStudent, address: e.target.value })}
+            required
           />
 
           <input
@@ -68,6 +104,7 @@ const AddStudent = () => {
             placeholder='Phone Number'
             className='border-2 p-2 rounded-full pl-2'
             onChange={(e) => setFormStudent({ ...formStudent, phoneNumber: e.target.value })}
+            required
           />
 
           <input
@@ -78,6 +115,7 @@ const AddStudent = () => {
             placeholder='Birth Date'
             className=' border-2 p-2 rounded-full pl-2'
             onChange={(e) => setFormStudent({ ...formStudent, dateBirth: e.target.value })}
+            required
           />
 
           <select
@@ -85,6 +123,7 @@ const AddStudent = () => {
             data-testid='gender'
             className='bg-white border-2 p-2 rounded-full'
             onChange={(e) => setFormStudent({ ...formStudent, gender: e.target.value })}
+            required
           >
             <option value='' disabled selected hidden>
               Gender
@@ -98,6 +137,7 @@ const AddStudent = () => {
             data-testid='prody'
             className='bg-white border-2 p-2 rounded-full'
             onChange={(e) => setFormStudent({ ...formStudent, prody: e.target.value })}
+            required
           >
             <option value='' disabled selected hidden>
               Program Study
