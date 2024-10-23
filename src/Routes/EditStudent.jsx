@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { useParams, useNavigate } from 'react-router-dom';
+import NotFound from './NotFound';
 
 const EditStudent = () => {
   // TODO: answer here
@@ -85,7 +86,7 @@ const EditStudent = () => {
   };
 
   if (error) {
-    return <div>Error</div>;
+    return <NotFound />;
   }
 
   return (
