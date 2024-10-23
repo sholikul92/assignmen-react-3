@@ -4,7 +4,18 @@ import { useNavigate } from 'react-router-dom';
 const NotFound = () => {
   const navigate = useNavigate();
 
-  return <>{/* TODO: answer here */}</>;
+  const back = () => {
+    navigate('/');
+  };
+
+  return (
+    <div className='flex flex-col w-full h-screen items-center justify-center'>
+      <p className='font-bold text-4xl'>404 | Not Found</p>
+      <button data-testid='back' onClick={back} className='bg-gray-700 text-white font-semibold rounded-xl py-2 px-6'>
+        Back
+      </button>
+    </div>
+  );
 };
 
 export default NotFound;
