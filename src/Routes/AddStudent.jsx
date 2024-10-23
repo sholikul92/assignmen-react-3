@@ -116,7 +116,7 @@ const AddStudent = () => {
           />
 
           <input
-            type='number'
+            type='text'
             data-testid='phoneNumber'
             name='phoneNumber'
             id='input-phoneNumber'
